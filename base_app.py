@@ -31,6 +31,7 @@ import pandas as pd
 # Visualisation dependencies
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.sparse import csr_matrix
 
 # Vectorizer
 news_vectorizer = open("resources/tfidf_vectorizer.pkl","rb")
