@@ -23,19 +23,15 @@
 """
 # Streamlit dependencies
 import streamlit as st
-import cloudpickle 
+import pickle 
 import os
 
 # Data dependencies
 import pandas as pd
 
-# Visualisation dependencies
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 # Vectorizer
 news_vectorizer = open("resources/tfidf_vectorizer.pkl","rb")
-# tweet_cv = cloudpickle.load(news_vectorizer) # loading your vectorizer from the pkl file
+tweet_cv = pickle.load(news_vectorizer) # loading your vectorizer from the pkl file
 
 # Load your raw data
 raw = pd.read_csv("resources/train.csv")
@@ -106,13 +102,13 @@ def main():
 
 			# Load the selected model
 			if selected_model == "SVM":
-				predictor = cloudpickle.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
+				predictor = pickle.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
 				prediction = predictor.predict(vect_text)
 			elif selected_model == "CNN":
-				predictor = cloudpickle.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
+				predictor = pickle.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
 				prediction = predictor.predict(vect_text)
 			elif selected_model == "CNN2":
-				predictor = cloudpickle.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
+				predictor = pickle.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
 				prediction = predictor.predict(vect_text)
 
 
