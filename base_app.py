@@ -32,11 +32,10 @@ import pandas as pd
 # Visualisation dependencies
 import matplotlib.pyplot as plt
 import seaborn as sns
-from scipy.sparse import csr_matrix
 
 # Vectorizer
 news_vectorizer = open("resources/tfidf_vectorizer.pkl","rb")
-tweet_cv = cloudpickle.load(news_vectorizer) # loading your vectorizer from the pkl file
+# tweet_cv = cloudpickle.load(news_vectorizer) # loading your vectorizer from the pkl file
 
 # Load your raw data
 raw = pd.read_csv("resources/train.csv")
