@@ -3,7 +3,7 @@
     Simple Streamlit webserver application for serving developed classification
 	models.
 
-    Author: Explore Data Science Academy.
+    Author: Infinite Innovation
 
     Note:
     ---------------------------------------------------------------------
@@ -43,10 +43,33 @@ raw = pd.read_csv("resources/train.csv")
 def main():
 	"""Tweet Classifier App with Streamlit """
 
+	# Set overall theme
+	st.set_page_config(
+		page_title="Climate Change Sentiment Analysis",
+		page_icon="🌍",
+	)
+
+	# Customize colors and layout
+	st.markdown(
+		"""
+		<style>
+		.main {
+			background-color: #3e5243;
+		}
+		</style>
+		""",
+		unsafe_allow_html=True,
+	)
+
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.title("Infinite  ∞  innovation")
-	st.subheader("Climate change tweet classification")
+
+	# Add a logo to the sidebar
+	logo_path = "resources/imgs/logo.png"
+	st.sidebar.image(logo_path, use_column_width=True)
+
+	st.subheader("Climate change tweet classification 🌍")
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
@@ -65,18 +88,34 @@ def main():
 
 	# Building out the predication page
 	if selection == "Prediction":
-		st.info("Prediction with SVM Classifier ML Model")
+		st.info("Prediction with Different Machine Learning Models")
 		# Creating a text box for user input
 		
 		tweet_text = st.text_area("Enter Text","Type Here", key="user_input")
+
+		# Model selection dropdown
+		model_options = ["SVM", "CNN", "CNN2"]
+		selected_model = st.selectbox("Choose Model", model_options)
 
 		if st.button("Classify"):
 			# Transforming user input with vectorizer
 			vect_text = tweet_cv.transform([tweet_text]).toarray()
 			# Load your .pkl file with the model of your choice + make predictions
 			# Try loading in multiple models to give the user a choice
-			predictor = joblib.load(open(os.path.join("resources/svm_classifier.pkl"),"rb"))
-			prediction = predictor.predict(vect_text)
+
+			# Load the selected model
+			if selected_model == "SVM":
+				predictor = joblib.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
+				prediction = predictor.predict(vect_text)
+			elif selected_model == "CNN":
+				predictor = joblib.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
+				prediction = predictor.predict(vect_text)
+			elif selected_model == "CNN2":
+				predictor = joblib.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
+				prediction = predictor.predict(vect_text)
+
+
+
 
 			# When model has successfully run, will print prediction
 			# You can use a dictionary or similar structure to make this output
@@ -98,13 +137,6 @@ def main():
 		st.subheader("Word Cloud of Messages")
 		wordcloud = WordCloud(width=800, height=400, background_color='white').generate(' '.join(raw['message']))
 		st.image(wordcloud.to_array())
-
-		# Display a histogram of message lengths
-		st.subheader("Sistribution of Message Lengths")
-		raw['message_length'] = raw['message'].apply(len)
-		plt.hist(raw['message_length'], bins=30, edgecolor='k')
-		st.pyplot()
-
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
