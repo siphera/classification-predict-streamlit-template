@@ -139,10 +139,17 @@ def main():
 		wordcloud_image_path = "resources/imgs/wordcloud.jpg"
 		st.image(wordcloud_image_path, use_column_width=True)
 
-		# Load and display the pre-generated word cloud image
+		# Load and display the pre-generated Frequent words image
 		st.subheader("Frequent words from each sentiment")
 		frequnt_image_path = "resources/imgs/frequent_words.png"
 		st.image(frequnt_image_path, use_column_width=True)
+
+		# Load and display the pre-generated Frequent words image
+		st.subheader("Popular #hashtags from each sentiment")
+		hashtag_image_path = "resources/imgs/hashtag_analysis.png"
+		st.image(hashtag_image_path, use_column_width=True)
+
+		
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
