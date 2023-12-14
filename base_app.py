@@ -75,11 +75,40 @@ def main():
 
 	# Building out the "Information" page
 	if selection == "Information":
-		st.info("General Information")
-		# You can read a markdown file from supporting resources folder
-		st.markdown("Some information here")
+		st.info("App Overview")
+		st.markdown(
+            """
+            Welcome to the **Infinite ∞ Innovation** Climate Change Sentiment Analysis app! 🌍
 
-		st.subheader("Raw Twitter data and label")
+            **Purpose:**
+            This application aims to analyze sentiments expressed in tweets related to climate change.
+            By leveraging machine learning models, we categorize tweets into sentiment classes, providing insights
+            into public opinions and discussions surrounding climate issues.
+
+            **Models:**
+            Our app employs state-of-the-art machine learning models, including Support Vector Machines (SVM),
+            Convolutional Neural Networks (CNN), and variations thereof. These models have been trained on a diverse
+            dataset of climate change tweets to accurately classify sentiments.
+
+            **Data:**
+            The models were trained on a curated dataset sourced from diverse social media platforms.
+            The dataset contains a variety of messages, enabling our models to capture the nuanced expressions of
+            opinions regarding climate change.
+
+            **How to Use:**
+            1. Navigate to the **Prediction** tab.
+            2. Enter a tweet in the text area.
+            3. Choose a model from the dropdown menu.
+            4. Click the "Classify" button to see the sentiment prediction.
+
+            **Model Performance:**
+            We continuously strive to enhance model performance. Metrics such as accuracy, precision, and recall
+            are regularly assessed. While the models are powerful, it's important to consider their strengths and
+            limitations.
+
+            Thank you for using the Infinite ∞ Innovation Climate Change Sentiment Analysis app! 🌎✨
+            """
+        )
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write(raw[['sentiment', 'message']]) # will write the df to the page
 
