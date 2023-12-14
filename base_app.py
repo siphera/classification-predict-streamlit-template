@@ -102,10 +102,10 @@ def main():
 
 			# Load the selected model
 			if selected_model == "SVM":
-				predictor = pickle.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
+				predictor = pickle.load(open(os.path.join("resources/svm_classifier2.pkl"), "rb"))
 				prediction = predictor.predict(vect_text)
 			elif selected_model == "CNN":
-				predictor = pickle.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
+				predictor = pickle.load(open(os.path.join("resources/lsvc_classifier.pkl"), "rb"))
 				prediction = predictor.predict(vect_text)
 			elif selected_model == "CNN2":
 				predictor = pickle.load(open(os.path.join("resources/svm_classifier.pkl"), "rb"))
