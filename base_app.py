@@ -130,10 +130,14 @@ def main():
 		st.bar_chart(sentiment_counts)
 
 		# Display a word cloud of the most common words in messages
-		from wordcloud import WordCloud
+		# from wordcloud import WordCloud
+		# wordcloud = WordCloud(width=800, height=400, background_color='white').generate(' '.join(raw['message']))
+		# st.image(wordcloud.to_array())
+
+		# Load and display the pre-generated word cloud image
 		st.subheader("Word Cloud of Messages")
-		wordcloud = WordCloud(width=800, height=400, background_color='white').generate(' '.join(raw['message']))
-		st.image(wordcloud.to_array())
+		wordcloud_image_path = "resources/imgs/wordcloud.jpg"
+		st.image(wordcloud_image_path, use_column_width=True)
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
